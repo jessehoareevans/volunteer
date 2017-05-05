@@ -37,4 +37,26 @@ require('spec_helper')
         expect(project1).to(eq(project2))
     end
   end
+
+  describe(".find") do
+   it("returns a project by its ID") do
+     test_project = Project.new({:name => "Animal shelter", :id => nil})
+     test_project.save()
+     test_project2 = Project.new({:name => "Soup kitchen", :id => nil})
+     test_project2.save()
+     expect(Project.find(test_project2.id())).to(eq(test_project2))
+   end
+ end
+
+  describe("#volunteers") do
+    it("returns an array of volunteers for that project") do
+      test_project = Project.new({:name => "Animal shelter", :id => nil})
+      test_project.save()
+      test_volunteer = Volunteer.new({:name => "Bob", :project_id => test_project.id()})
+      test_volunteer.save()
+      test_volunteer2 = Volunteer.new({:name => "Harry", :project_id => test_project.id()})
+      test_volunteer2.save()
+      expect(test_project.volunteers()).to(eq([test_volunteer, test_volunteer2]))
+    end
+  end
 end
