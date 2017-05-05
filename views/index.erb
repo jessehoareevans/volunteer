@@ -1,0 +1,18 @@
+<h1>Volunteer Tracker</h1>
+
+<p>Here are all your volunteers:</p>
+
+<ul>
+  <% @volunteers.each() do |volunteer| %>
+    <li><%= volunteer.name() %></li>
+  <% end %>
+</ul>
+
+<p>Add a new volunteer:</p>
+
+<form action="/volunteers" method="post">
+  <label for="name">Name of Volunteer</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Volunteer</button>
+</form>
