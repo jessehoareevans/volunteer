@@ -1,29 +1,16 @@
 require('spec_helper')
 
-DB = PG.connect({:dbname => 'volunteer_tracker_test'})
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM projects *;")
-    DB.exec("DELETE FROM volunteers *;")
-  end
-end
-
 describe(Volunteer) do
-  before() do
-    Volunteer.clear()
+  describe('.all') do
+    it("is empty at first") do
+      expect(Volunteer.all()).to(eq([]))
+    end
   end
 
   describe("#name") do
     it("returns the volunteer's name") do
       test_volunteer = Volunteer.new({:name => "Harry", :project_id => 1})
-      expect(test_volunteer.name()).to(eq("Bob"))
-    end
-  end
-
-  describe('.all') do
-    it("is empty at first") do
-      expect(Volunteer.all()).to(eq([]))
+      expect(test_volunteer.name()).to(eq("Harry"))
     end
   end
 
