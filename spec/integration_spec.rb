@@ -35,7 +35,7 @@ describe('seeing details of a single project', {:type => :feature}) do
   end
 end
 
-describe('adding volunteers to any project', {:type => :feature}) do
+describe('adding a volunteer to any project', {:type => :feature}) do
   it('allows a user to add a volunteer to a project') do
     test_project = Project.new({:name => 'Animal shelter', :id => nil})
     test_project.save()
