@@ -4,7 +4,7 @@ also_reload("lib/**/*.rb")
 require("./lib/volunteer")
 require("pg")
 
-DB = PG.connect({:dbname => "volunteer_tracker"})
+DB = PG.connect({:dbname => "volunteer_tracker_test"})
 
 get("/") do
   erb(:index)
