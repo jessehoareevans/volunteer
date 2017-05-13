@@ -68,4 +68,26 @@ require('spec_helper')
       expect(project.name()).to(eq("Soup kitchen"))
     end
   end
-end
+
+  describe("#delete") do
+    it("lets you delete a project from the database") do
+      project = Project.new({:name => "Animal shelter", :id => nil})
+      project.save()
+      project2 = Project.new({:name => "Soup kitchen", :id => nil})
+      project2.save()
+      project.delete()
+      expect(Project.all()).to(eq([project2]))
+    end
+  end
+
+  it("deletes a project's volunteers from the database") do
+      project = Project.new({:name => "Animal shelter", :id => nil})
+      project.save()
+      volunteer = Volunteer.new({:name => "Spongebob", :project_id => project.id()})
+      volunteer.save()
+      volunteer2 = Volunteer.new({:name => "Micky Mouse", :project_id => project.id()})
+      volunteer2.save()
+      project.delete()
+      expect(Volunteer.all()).to(eq([]))
+    end
+  end
