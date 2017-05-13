@@ -35,13 +35,13 @@ describe('seeing details of a single project', {:type => :feature}) do
   end
 end
 
-describe('adding a volunteer to any project', {:type => :feature}) do
+describe('adding a volunteer to a project', {:type => :feature}) do
   it('allows a user to add a volunteer to a project') do
     test_project = Project.new({:name => 'Animal shelter', :id => nil})
     test_project.save()
     visit("/projects/#{test_project.id()}")
     fill_in("Name", {:with => "Gary"})
-    click_button("Add New Volunteer")
-    expect(page).to have_content("Success!")
+    click_button("Add volunteer")
+    expect(page).to have_content("Success")
   end
 end

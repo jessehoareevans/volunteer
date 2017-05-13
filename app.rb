@@ -2,6 +2,7 @@ require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
 require("./lib/volunteer")
+require("./lib/project")
 require("pg")
 
 DB = PG.connect({:dbname => "volunteer_tracker_test"})
@@ -37,5 +38,5 @@ post("/volunteers") do
   @project = Project.find(project_id)
   @volunteer = Volunteer.new({:name => name, :project_id => project_id})
   @volunteer.save()
-  erb(:volunteer_success)
+  erb(:success)
 end
