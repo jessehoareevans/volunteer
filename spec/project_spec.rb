@@ -59,4 +59,13 @@ require('spec_helper')
       expect(test_project.volunteers()).to(eq([test_volunteer, test_volunteer2]))
     end
   end
+
+  describe("#update") do
+    it("lets you update projects in the database") do
+      project = Project.new({:name => "Animal shelter", :id => nil})
+      project.save()
+      project.update({:name => "Soup kitchen"})
+      expect(project.name()).to(eq("Soup kitchen"))
+    end
+  end
 end

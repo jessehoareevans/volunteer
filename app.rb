@@ -40,3 +40,15 @@ post("/volunteers") do
   @volunteer.save()
   erb(:success)
 end
+
+get("/projects/:id/edit") do
+  @project = Project.find(params.fetch('id').to_i)
+  erb(:project_edit)
+end
+
+patch("/projects/:id") do
+  name = params.fetch("name")
+  @project = Project.find(params.fetch("id").to_i())
+  @project.update({:name => name})
+  erb(:project)
+end
