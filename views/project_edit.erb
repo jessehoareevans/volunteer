@@ -14,3 +14,18 @@
 
   <button type="submit">Delete project</button>
 </form>
+
+<% if @project.volunteers().any?() %>
+  <h3>Here are all the volunteers in this project:</h3>
+
+  <ul>
+    <% @project.volunteers().each() do |volunteer| %>
+      <li><%= volunteer.name() %> </li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no volunteers signed up for this project!</p>
+  <% end %>
+
+<a href="/"><button class="button btn">Home</a>

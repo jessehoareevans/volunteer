@@ -27,7 +27,7 @@ describe('seeing details of a single project', {:type => :feature}) do
   it('allows a user to click a project to see the details for it') do
     test_project = Project.new({:name => "Animal Shelter", :id => nil})
     test_project.save()
-    test_volunteer = Volunteer.new({:name => "Larry", :project_id => test_project.id()})
+    test_volunteer = Volunteer.new({:name => "Larry", :project_id => test_project.id(), :id => nil})
     test_volunteer.save()
     visit('/projects')
     click_link(test_project.name())
